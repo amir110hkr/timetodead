@@ -1,100 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Countdown Timer</title>
-  <style>
-    @font-face {
-        font-family: dana;
-        src: url(dana-extrabold.ttf);
-    }
-    body {
-      font-family: dana;
-      background-color: #f1f1f1;
-      text-align: center;
-      padding-top: 100px;
-    }
-    h1 {
-      font-size: 32px;
-      color: #333;
-      margin-bottom: 20px;
-    }
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
 
-    .countdown-container {
-    flex-direction: row;
-      display: flex;
-    }
-
-    .countdown-item {
-      flex: 1;
-      text-align: center;
-      margin: 0 10px;
-    }
-
-    .countdown-item .countdown-value {
-      font-size: 58px;
-      color: #333;
-    }
-
-    .countdown-item .countdown-label {
-      font-size: 21px;
-      color: #777;
-      text-transform: uppercase;
-    }
-  </style>
+        #container {
+            width:600px;
+            height: 100px;
+            overflow: hidden;
+        }
+        #modules {
+            height:190px; /* 40px - more place for scrollbar, is hidden under parent box */
+            padding:5px;
+            white-space:nowrap;
+            overflow-x: scroll;
+            overflow-y: hide;
+            -webkit-overflow-scrolling:touch;
+        }
+        .module {
+            display:inline-block;
+            width:150px;
+            height:150px;
+            line-height:50px;
+            text-align:center;
+            background:#ddd;
+        }
+        .module + .module {
+            margin-left:5px
+        }
+    </style>
 </head>
 <body>
-  <h1 id="countdown">برای عرشیا چقدر زمان باقی مانده است ؟</h1>
-
-  <div class="countdown-container">
-    <div class="countdown-item">
-      <div class="countdown-value" id="days">00</div>
-      <div class="countdown-label">Days</div>
+<div id="container">
+    <div id="modules">
+        <div class="module">a</div>
+        <div class="module">b</div>
+        <div class="module">c</div>
+        <div class="module">d</div>
+        <div class="module">e</div>
+        <div class="module">f</div>
+        <div class="module">g</div>
+        <div class="module">h</div>
+        <div class="module">i</div>
+        <div class="module">j</div>
+        <div class="module">k</div>
+        <div class="module">l</div>
     </div>
-    <div class="countdown-item">
-      <div class="countdown-value" id="hours">00</div>
-      <div class="countdown-label">Hours</div>
-    </div>
-    <div class="countdown-item">
-      <div class="countdown-value" id="minutes">00</div>
-      <div class="countdown-label">Minutes</div>
-    </div>
-    <div class="countdown-item">
-      <div class="countdown-value" id="seconds">00</div>
-      <div class="countdown-label">Seconds</div>
-    </div>
-  </div>
+</div>
 
-  <script>
-    // Set the target date and time (in UTC +3:30)
-const targetDate = new Date("2023-09-07T20:29:00Z");
-
-    // Function to update the countdown timer
-    function updateCountdown() {
-      const now = new Date();  // Current date and time
-
-      // Calculate the remaining time in milliseconds
-      const remainingTime = targetDate.getTime() - now.getTime();
-
-      // Calculate the remaining days, hours, minutes, and seconds
-      const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-
-      // Display the countdown timer
-      document.getElementById("days").textContent = days.toString().padStart(2, '0');
-      document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
-      document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
-      document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
-
-      // Update the countdown every second
-      if (remainingTime > 0) {
-        setTimeout(updateCountdown, 1000);
-      }
-    }
-
-    // Initial call to update the countdown on page load
-    updateCountdown();
-  </script>
 </body>
 </html>
